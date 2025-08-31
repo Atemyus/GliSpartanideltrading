@@ -1,70 +1,186 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Sword, ArrowRight, Shield, Users } from 'lucide-react'
+import { Sword, ArrowRight, Shield, Users, Crown, Sparkles, Zap, Target } from 'lucide-react'
 import { Button } from '../ui/button'
 
 export default function WarriorCTA() {
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Epic Background */}
+    <section className="section-padding relative overflow-hidden">
+      {/* Epic Premium Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-spartan-red/20 via-spartan-black to-spartan-red/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-spartan-red/20 via-spartan-black to-spartan-gold/20" />
+        <div className="absolute inset-0 hero-pattern opacity-30" />
+        
+        {/* Animated background elements */}
+        <motion.div
+          animate={{ 
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-spartan-gold/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0]
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-spartan-red/10 rounded-full blur-3xl"
+        />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container-luxury relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto"
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-5xl mx-auto"
         >
-          <h2 className="font-spartan text-5xl md:text-6xl text-white mb-6">
-            UNISCITI ALLA
-            <span className="text-gradient block">LEGIONE SPARTANA</span>
-          </h2>
+          {/* Premium Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-3 glass-effect px-8 py-4 rounded-full mb-12 border border-spartan-gold/30"
+          >
+            <Crown className="w-6 h-6 text-spartan-gold" />
+            <span className="text-spartan-gold font-bold text-lg tracking-wide uppercase">
+              Accesso Esclusivo
+            </span>
+            <Sparkles className="w-5 h-5 text-spartan-gold animate-pulse" />
+          </motion.div>
 
-          <p className="text-xl text-gray-300 mb-8">
-            300 guerrieri tennero testa a un impero. 
-            Immagina cosa può fare un esercito di trader spartani nei mercati moderni.
-          </p>
+          {/* Epic Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="luxury-heading mb-8"
+          >
+            <span className="block">Entra nella</span>
+            <span className="block text-gradient">Legione d'Élite</span>
+            <span className="block">dei Trader Spartani</span>
+          </motion.h2>
 
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" className="bg-spartan-red hover:bg-spartan-red/80 group">
-                <Shield className="mr-2 group-hover:rotate-12 transition-transform" />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-2xl premium-text mb-12 max-w-4xl mx-auto leading-relaxed"
+          >
+            300 guerrieri tennero testa a un impero intero alle Termopili. 
+            Oggi, <span className="text-spartan-gold font-bold">347 trader spartani</span> dominano 
+            i mercati globali con tecnologia d'avanguardia.
+          </motion.p>
+
+          {/* Premium CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="flex flex-wrap gap-6 justify-center mb-16"
+          >
+            <motion.button 
+              className="btn-luxury text-xl px-12 py-6 shadow-glow-gold relative overflow-hidden group"
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="flex items-center gap-3 relative z-10">
+                <Shield className="w-7 h-7 group-hover:rotate-12 transition-transform duration-300" />
                 <span className="font-bold">DIVENTA UNO SPARTANO</span>
-              </Button>
-            </motion.div>
+                <ArrowRight className="w-6 h-6" />
+              </div>
+            </motion.button>
             
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" variant="outline" className="border-spartan-gold text-spartan-gold hover:bg-spartan-gold hover:text-black">
-                <Sword className="mr-2" />
-                <span className="font-bold">SCOPRI DI PIÙ</span>
-              </Button>
-            </motion.div>
+            <motion.button 
+              className="btn-outline-luxury text-xl px-12 py-6 group"
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="flex items-center gap-3">
+                <Sword className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="font-bold">SCOPRI L'ARSENALE</span>
+              </div>
+            </motion.button>
+          </motion.div>
+
+          {/* Premium Features Highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                icon: Shield,
+                title: "Protezione Totale",
+                description: "Risk management militare con garanzia capitale",
+                gradient: "from-blue-500 to-cyan-500"
+              },
+              {
+                icon: Zap,
+                title: "Tecnologia Superiore",
+                description: "AI proprietaria testata su milioni di operazioni",
+                gradient: "from-spartan-gold to-yellow-400"
+              },
+              {
+                icon: Target,
+                title: "Risultati Garantiti",
+                description: "89% win rate verificato da enti terzi",
+                gradient: "from-green-500 to-emerald-500"
+              }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 + index * 0.1 }}
+                viewport={{ once: true }}
+                className="group"
+              >
+                <div className="professional-card text-center hover:border-white/20">
+                  {/* Premium icon */}
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} shadow-luxury mb-6`}
+                  >
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </motion.div>
+                  
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gradient transition-all duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="premium-text leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="glass-effect rounded-lg p-4">
-              <Shield className="w-8 h-8 text-spartan-gold mb-2" />
-              <h3 className="font-bold text-white mb-1">Protezione Garantita</h3>
-              <p className="text-sm text-gray-400">Stop loss automatici e gestione del rischio</p>
+          {/* Final Premium Touch */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <div className="glass-effect rounded-2xl p-6 border border-spartan-gold/20 inline-block">
+              <div className="flex items-center gap-4">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-white/80 font-medium">
+                  <span className="text-spartan-gold font-bold">23 trader</span> si sono uniti oggi
+                </span>
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+              </div>
             </div>
-            
-            <div className="glass-effect rounded-lg p-4">
-              <Sword className="w-8 h-8 text-spartan-gold mb-2" />
-              <h3 className="font-bold text-white mb-1">Armi Affilate</h3>
-              <p className="text-sm text-gray-400">Algoritmi testati in battaglia</p>
-            </div>
-            
-            <div className="glass-effect rounded-lg p-4">
-              <Users className="w-8 h-8 text-spartan-gold mb-2" />
-              <h3 className="font-bold text-white mb-1">Fratellanza</h3>
-              <p className="text-sm text-gray-400">Community esclusiva e supporto 24/7</p>
-            </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
